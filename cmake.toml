@@ -1,0 +1,34 @@
+
+# Reference: https://build-cpp.github.io/cmkr/cmake-toml
+[project]
+name = "llvm-msvc-driver-template"
+include-before = [
+	"cmake/msvc-configurations.cmake",
+]
+msvc-runtime = "static"
+
+[variables]
+CMAKE_MODULE_PATH = "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+
+[find-package.WDK]
+
+[template.driver]
+type = "executable"
+add-function = "wdk_add_driver"
+compile-features = ["cxx_std_20"]
+
+[template.driver_lib]
+type = "static"
+add-function = "wdk_add_library"
+compile-features = ["cxx_std_20"]
+
+[subdir.lib]
+
+[target.drv1]
+type = "driver"
+sources = [
+    "sys/drv1/*.cpp",
+    "sys/drv1/*.hpp",
+    "sys/drv1/*.h",
+]
+link-libraries = ["utils"]
