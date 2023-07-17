@@ -1,6 +1,6 @@
-# llvm-msvc-windows-driver-template
+# llvm-msvc-intrinsic-test
 
-Simple [`cmkr`](https://cmkr.build) template for a WDK kernel driver for Windows. The `WDK` package is based on [FindWDK](https://github.com/SergiusTheBest/FindWDK).
+Intrinsic test for llvm-msvc.
 
 ## Requirements
 
@@ -15,5 +15,3 @@ Simple [`cmkr`](https://cmkr.build) template for a WDK kernel driver for Windows
 cmake -Bbuild -TLLVM-MSVC_v143 -DCMAKE_WIN64_DRIVER=1
 cmake --build build --config Release
 ```
-
-You can open `build\llvm-msvc-driver-template.sln` in Visual Studio and work there.
