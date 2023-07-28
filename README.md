@@ -1,6 +1,6 @@
 # llvm-msvc-intrinsic-test
 
-Intrinsic test for llvm-msvc
+Intrinsic test for llvm-msvc.
 
 ## Requirements
 
