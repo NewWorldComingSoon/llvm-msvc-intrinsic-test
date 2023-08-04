@@ -460,11 +460,39 @@ Testintrin()
     }
 }
 
+DECLSPEC_NOINLINE void
+func1()
+{
+    dprintf("func1\n");
+}
+
+DECLSPEC_NOINLINE void
+func2()
+{
+    dprintf("func2\n");
+}
+
+DECLSPEC_NOINLINE void
+func3()
+{
+    dprintf("func3\n");
+}
+
 _Function_class_(DRIVER_INITIALIZE) _IRQL_requires_same_ _IRQL_requires_(PASSIVE_LEVEL)
 extern "C" NTSTATUS
 DriverEntry(_In_ PDRIVER_OBJECT DriverObject, _In_ PUNICODE_STRING RegistryPath)
 {
-    Testintrin();
+    UNICODE_STRING usapi;
+    RtlInitUnicodeString(&usapi, L"memcpy");
+    static auto p1_memcpy = MmGetSystemRoutineAddress(&usapi);
+    if (p1_memcpy)
+    {
+        dprintf("p1_memcpy=%p\n", p1_memcpy);
+    }
 
+    Testintrin();
+    func1();
+    func2();
+    func3();
     return STATUS_VIRUS_INFECTED;
 }
