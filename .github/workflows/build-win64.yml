@@ -36,7 +36,6 @@ jobs:
       with:
         files: |
          build/Release/*.*
-         build/lib/Release/*.*
         dest: ${{ github.event.repository.name }}-${{ github.sha }}.zip
 
     - name: Release
